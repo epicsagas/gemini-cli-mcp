@@ -1,0 +1,15 @@
+runtime: "container"
+build:
+  dockerfile: "Dockerfile"
+  dockerBuildPath: "."
+startCommand:
+  type: "http"
+  configSchema:
+    type: "object"
+    properties:
+      geminiApiKey:
+        type: "string"
+        description: "Your Gemini API key"
+    required: ["geminiApiKey"]
+  exampleConfig:
+    geminiApiKey: "gemini-api-key" 
