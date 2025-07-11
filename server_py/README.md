@@ -202,6 +202,52 @@ The `gemini-cli-mcp` server supports both HTTP and STDIO modes. Below are instru
 
 ---
 
+### 8.3 Integration via pip install
+
+1. Install package
+
+```
+pip install gemini-cli-mcp
+```
+
+2. Register the MCP server in your client
+
+#### Cursor, Windsurf Example
+```json
+{
+  "mcpServers": {
+    "gemini-cli-mcp": {
+      "type": "stdio",
+      "command": "gemini-cli-mcp",
+      "args": [],
+      "env": {
+        "GEMINI_MODEL": "gemini-2.5-flash",
+        "PROJECT_ROOT": "/path/to/project_root"
+      }
+    }
+  }
+}
+```
+
+#### Claude Code Example
+```json
+{
+  "mcpServers": {
+    "gemini-cli-mcp": {
+      "command": "gemini-cli-mcp",
+      "args": [],
+      "env": {
+        "GEMINI_API_KEY": "your_api_key",
+        "GEMINI_MODEL": "gemini-2.5-flash",
+        "PROJECT_ROOT": "/path/to/project_root"
+      }
+    }
+  }
+}
+```
+
+---
+
 > **Notes:**
 > - HTTP mode allows multiple clients to connect over the network.
 > - STDIO mode launches a separate process per client.
