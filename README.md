@@ -93,7 +93,7 @@ The server exposes `gemini-cli` commands as MCP tools. The core logic involves w
   "mcpServers": {
     "gemini-cli-mcp": {
       "type": "stdio",
-      "command": "gemini-cli-mcp", // gemini-cli-mcp-server for node
+      "command": "gemini-cli-mcp", // gemini-cli-mcp-node for node
       "env": {
         "GEMINI_MODEL": "gemini-2.5-flash",
         "PROJECT_ROOT": "/path/to/project_root"
@@ -111,7 +111,7 @@ The server exposes `gemini-cli` commands as MCP tools. The core logic involves w
 {
   "mcpServers": {
     "gemini-cli-mcp": {
-      "command": "/path/to/bin/gemini-cli-mcp", // gemini-cli-mcp-server for node
+      "command": "/path/to/bin/gemini-cli-mcp", // gemini-cli-mcp-node for node
       "args": [],
       "env": {
         "GEMINI_API_KEY": "your_api_key",
