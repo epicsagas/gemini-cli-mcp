@@ -1,5 +1,5 @@
 {
-  "name": "gemini-cli-mcp-server",
+  "name": "gemini-cli-mcp-node",
   "version": "0.1.1",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "nodejs",
     "typescript"
   ],
-  "author": "wowinno@gmail.com",
+  "author": "https://github.com/epicsagas",
   "license": "Apache-2.0",
   "description": "Node.js MCP server for gemini-cli, provides MCP-compliant tools using Gemini cli.",
   "dependencies": {
