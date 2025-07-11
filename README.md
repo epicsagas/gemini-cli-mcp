@@ -25,13 +25,15 @@ This project aims to provide a seamless integration between AI agents and `gemin
 
 ### Architecture
 
-```
-+--------------+      MCP       +-------------------+      Shell      +--------------+
-|              | <-----------> |                   | <-------------> |              |
-|   AI Agent   |  (stdio/http) | gemini-cli-mcp    |  (Subprocess)   |  gemini-cli  |
-| (Cursr, etc.)|               | (Python or Node.js) |                 |              |
-|              |               |                   |                 |              |
-+--------------+               +-------------------+                 +--------------+
+```mermaid
+flowchart LR
+    A["AI Agent<br/>(Cursor, etc.)"]
+    B["gemini-cli-mcp<br/>(Python or Node.js)"]
+    C["gemini-cli"]
+    A -- "MCP (stdio/http)" --> B
+    B -- "Shell (Subprocess)" --> C
+    C -- "Shell (Subprocess)" --> B
+    B -- "MCP (stdio/http)" --> A
 ```
 
 ## 2. Implementations
@@ -66,10 +68,10 @@ The server exposes `gemini-cli` commands as MCP tools. The core logic involves w
     -   [x] Implement `gemini_ask` and `gemini_agent` tools.
     -   [x] Complete `stdio` and `http` modes.
     -   [x] Finalize environment variable handling.
--   [ ] **Phase 2: Git Tools & Containerization**
-    -   [ ] Implement `gemini_git_commit`, `pr`, and `diff` tools in Python.
-    -   [ ] Create and test the `Dockerfile`.
-    -   [ ] Perform test deployments to PyPI.
+-   [ ] ~~**Phase 2: Git Tools & Containerization**~~
+    -   ~~[ ] Implement `gemini_git_commit`, `pr`, and `diff` tools in Python.~~
+    -   ~~[ ] Create and test the `Dockerfile`.~~
+    -   ~~[ ] Perform test deployments to PyPI.~~
 -   [ ] **Phase 3: Node.js Porting & Distribution**
     -   [ ] Implement all features in Node.js.
     -   [ ] Package and deploy to npm.
