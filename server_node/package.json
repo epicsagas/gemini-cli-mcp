@@ -1,0 +1,27 @@
+{
+  "name": "gemini-cli-mcp",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --outDir dist",
+    "test": "jest",
+    "start": "MCP_TRANSPORT=httpStream node dist/main.js",
+    "start:stdio": "MCP_TRANSPORT=stdio node dist/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.47.3",
+    "fastmcp": "^3.8.4",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/node": "^24.0.13",
+    "jest": "^30.0.4",
+    "ts-jest": "^29.4.0",
+    "typescript": "^5.8.3"
+  }
+}
