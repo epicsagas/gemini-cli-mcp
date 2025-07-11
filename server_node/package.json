@@ -1,6 +1,6 @@
 {
   "name": "gemini-cli-mcp-node",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "index.js",
   "scripts": {
     "build": "tsc --outDir dist",
@@ -22,7 +22,11 @@
   "dependencies": {
     "@dotenvx/dotenvx": "^1.47.3",
     "fastmcp": "^3.8.4",
+    "gemini-cli-mcp-node": "file:gemini-cli-mcp-node-0.1.2.tgz",
     "zod": "^3.25.76"
+  },
+  "bin": {
+    "gemini-cli-mcp-node": "./dist/main.js"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
