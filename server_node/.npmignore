@@ -1,0 +1,19 @@
+# Ignore test files and folders
+/tests
+*.test.ts
+
+# Ignore config and environment files
+.env
+.env.*
+jest.config.js
+tsconfig.json
+
+# Ignore local development files
+*.log
+node_modules
+
+# Ignore source files (only dist/ should be published)
+src/
+
+# Ignore misc
+.DS_Store 

@@ -159,7 +159,13 @@ The `gemini-cli-mcp` server supports both HTTP and STDIO modes. Below are instru
   "mcpServers": {
     "gemini-cli-mcp": {
       "type": "stdio",
-      "command": "gemini-cli-mcp",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/path/to/project_root/server_py/main.py"
+        "run",
+        "main.py"
+      ],
       "env": {
         "GEMINI_MODEL": "gemini-2.5-flash",
         "PROJECT_ROOT": "/path/to/project_root"
@@ -177,8 +183,13 @@ The `gemini-cli-mcp` server supports both HTTP and STDIO modes. Below are instru
 {
   "mcpServers": {
     "gemini-cli-mcp": {
-      "command": "/path/to/bin/gemini-cli-mcp",
-      "args": [],
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/path/to/project_root/server_py/main.py"
+        "run",
+        "main.py"
+      ],
       "env": {
         "GEMINI_API_KEY": "your_api_key",
         "GEMINI_MODEL": "gemini-2.5-flash",
