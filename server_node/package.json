@@ -1,6 +1,6 @@
 {
   "name": "gemini-cli-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "index.js",
   "scripts": {
     "build": "tsc --outDir dist",
@@ -8,10 +8,17 @@
     "start": "MCP_TRANSPORT=httpStream node dist/main.js",
     "start:stdio": "MCP_TRANSPORT=stdio node dist/main.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": [
+    "gemini",
+    "mcp",
+    "ai",
+    "server",
+    "nodejs",
+    "typescript"
+  ],
+  "author": "wowinno@gmail.com",
+  "license": "Apache-2.0",
+  "description": "Node.js MCP server for gemini-cli, provides MCP-compliant tools using Gemini cli.",
   "dependencies": {
     "@dotenvx/dotenvx": "^1.47.3",
     "fastmcp": "^3.8.4",
