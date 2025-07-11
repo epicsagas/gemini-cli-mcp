@@ -1,5 +1,22 @@
 # `gemini-cli-mcp`
 
+> **Quickstart for End Users:**
+>
+> **Install via PyPI (Python):**
+> ```sh
+> pip install gemini-cli-mcp
+> ```
+> **Install via npm (Node.js):**
+> ```sh
+> npm install -g gemini-cli-mcp
+> ```
+>
+> **MCP Client Configuration:**
+> - Set the `command` in your MCP client (e.g., Cursor, Claude Desktop) to the absolute path of the installed `gemini-cli-mcp` executable.
+> - Do **not** point to a local script or source file unless you are developing or debugging.
+>
+> For advanced usage, development, or troubleshooting, see the implementation-specific README files in `server_py/` (Python) or `server_node/` (Node.js).
+
 > **Authentication Requirement:**
 > 
 > Before using this server, you must either:
@@ -8,9 +25,9 @@
 >
 > Without authentication, the server will not be able to invoke `gemini-cli` commands successfully.
 
-`gemini-cli-mcp` is a server that bridges the **Model Context Protocol (MCP)** with the locally installed `gemini-cli`. It allows modern AI agents, such as Cursr and Claude Desktop, to use `gemini-cli`'s powerful features as Tools.
+`gemini-cli-mcp` is a server that bridges the **Model Context Protocol (MCP)** with the locally installed `gemini-cli`. It allows modern AI agents, such as Cursor and Claude Desktop, to use `gemini-cli`'s powerful features as Tools.
 
-This server enables invoking key `gemini-cli` functionalities—including `ask`, `agent`, `commit`, and `pr`—directly from your AI agent.
+This server enables invoking key `gemini-cli` functionalities—including `ask`, ~~`agent`, `commit`, and `pr`~~ —directly from your AI agent.
 
 ## 1. Project Overview
 
@@ -62,7 +79,51 @@ The server exposes `gemini-cli` commands as MCP tools. The core logic involves w
 *   `gemini_ask` → `gemini ask --model {model} --all_files --sandbox --prompt "{question}"`
 *   `gemini_agent` → `gemini agent --model {model} --all_files --sandbox --yolo --prompt "{prompt}"`
 
-## 4. Development Roadmap
+## 4. MCP Client Configuration & Usage
+
+**No need to start the server manually**
+- The MCP client will launch the process and communicate via STDIO.
+- Just register the following configuration.
+
+#### Cursor, Windsurf Example
+```json
+// cursor: $HOME/.cursor/mcp.json
+// windwurf: $HOME/.codeium/windsurf/mcp_config.json
+{
+  "mcpServers": {
+    "gemini-cli-mcp": {
+      "type": "stdio",
+      "command": "gemini-cli-mcp",
+      "env": {
+        "GEMINI_MODEL": "gemini-2.5-flash",
+        "PROJECT_ROOT": "/path/to/project_root"
+      }
+    }
+  }
+}
+```
+
+#### Claude Code Example
+```json
+// Settings > Developer > Edit Config > claude_desktop_config.json
+// find command location with `which gemini-cli-mcp`
+// MUST provide a Gemini API key to use with Claude Desktop
+{
+  "mcpServers": {
+    "gemini-cli-mcp": {
+      "command": "/path/to/bin/gemini-cli-mcp",
+      "args": [],
+      "env": {
+        "GEMINI_API_KEY": "your_api_key",
+        "GEMINI_MODEL": "gemini-2.5-flash",
+        "PROJECT_ROOT": "/path/to/project_root"
+      }
+    }
+  }
+}
+```
+
+## 5. Development Roadmap
 
 -   [x] **Phase 1: Python MVP**
     -   [x] Implement `gemini_ask` and `gemini_agent` tools.
@@ -80,9 +141,12 @@ The server exposes `gemini-cli` commands as MCP tools. The core logic involves w
     -   [ ] Write comprehensive `README.md` files for all implementations.
     -   [ ] Conduct cross-platform testing and bug fixes.
 
-## 5. Risks & Mitigation
+## 6. Risks & Mitigation
 
-*   **Risk:** The `gemini-cli` command-line interface changes, breaking the server.
-    *   **Mitigation:** Pin the server to a specific version of `gemini-cli` and use integration tests to detect breaking changes.
+*   **Risk:** The `gemini-cli` command-line interface changes, breaking the 
+server.
+    *   **Mitigation:** Pin the server to a specific version of `gemini-cli` 
+    and use integration tests to detect breaking changes.
 *   **Risk:** Exceptions arise due to the user's local `git` configuration.
-    *   **Mitigation:** Add pre-flight checks for `git` and return clear error messages.
+    *   **Mitigation:** Add pre-flight checks for `git` and return clear 
+    error messages.
