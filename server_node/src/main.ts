@@ -4,18 +4,54 @@ import 'dotenv/config';
 import { FastMCP } from "fastmcp";
 import { z } from "zod";
 import { spawn } from "child_process";
+import { readFileSync } from "fs";
+import { join } from "path";
+import { VERSION } from "./version";
 
+// 환경변수 상수 선언 복구
 const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
-const GEMINI_ALL_FILES = process.env.GEMINI_ALL_FILES !== "false"; // default true
-const GEMINI_SANDBOX = process.env.GEMINI_SANDBOX !== "false"; // default true
+const GEMINI_ALL_FILES = process.env.GEMINI_ALL_FILES !== "false";
+const GEMINI_SANDBOX = process.env.GEMINI_SANDBOX !== "false";
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
 const PROJECT_ROOT = process.env.PROJECT_ROOT || "";
 const QUERY_TIMEOUT = parseInt(process.env.QUERY_TIMEOUT || "300", 10);
 const USE_SHELL = process.env.USE_SHELL === "true";
 
+function printHelp() {
+    console.log(`Usage: gemini-cli-mcp [options]\n\nOptions:\n  --version, -V    Show version information\n  --verbose, -v    Enable debug mode (set DEBUG=true)\n  --help, -h       Show this help message\n`);
+}
+
+function printVersionAndExit() {
+    console.log(`gemini-cli-mcp-node version: ${VERSION}`);
+    const child = spawn("gemini", ["--version"]);
+    let geminiVersion = "";
+    child.stdout.on("data", (data) => {
+        geminiVersion += data.toString();
+    });
+    child.on("close", () => {
+        if (geminiVersion.trim()) {
+            console.log(`gemini version: ${geminiVersion.trim()}`);
+        }
+        process.exit(0);
+    });
+}
+
+// Parse CLI options
+const args = process.argv.slice(2);
+if (args.includes("--help") || args.includes("-h")) {
+    printHelp();
+    process.exit(0);
+}
+if (args.includes("--version") || args.includes("-V")) {
+    printVersionAndExit();
+}
+if (args.includes("--verbose") || args.includes("-v")) {
+    process.env.DEBUG = "true";
+}
+
 const server = new FastMCP({
     name: "gemini-cli-mcp",
-    version: "0.1.0",
+    version: VERSION,
 });
 
 function buildGeminiArgs(prompt: string, extra: string[] = []): string[] {

@@ -133,12 +133,12 @@ The server exposes `gemini-cli` commands as MCP tools. The core logic involves w
     -   ~~[ ] Implement `gemini_git_commit`, `pr`, and `diff` tools in Python.~~
     -   ~~[ ] Create and test the `Dockerfile`.~~
     -   ~~[ ] Perform test deployments to PyPI.~~
--   [ ] **Phase 3: Node.js Porting & Distribution**
-    -   [ ] Implement all features in Node.js.
-    -   [ ] Package and deploy to npm.
-    -   [ ] Register on `Smithery.ai`.
+-   [x] **Phase 3: Node.js Porting & Distribution**
+    -   [x] Implement all features in Node.js.
+    -   [x] Package and deploy to npm.
+    -   ~~[ ] Register on `Smithery.ai`.~~
 -   [ ] **Phase 4: Documentation & Stabilization**
-    -   [ ] Write comprehensive `README.md` files for all implementations.
+    -   [x] Write comprehensive `README.md` files for all implementations.
     -   [ ] Conduct cross-platform testing and bug fixes.
 
 ## 6. Risks & Mitigation
