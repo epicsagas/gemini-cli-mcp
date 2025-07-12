@@ -7,6 +7,41 @@ import sys
 import shlex
 from datetime import datetime
 
+try:
+    from importlib.metadata import version, PackageNotFoundError
+except ImportError:
+    from importlib_metadata import version, PackageNotFoundError  # for Python <3.8
+
+def get_version():
+    try:
+        return version("gemini-cli-mcp")
+    except PackageNotFoundError:
+        return "unknown"
+
+def print_help():
+    print("""Usage: gemini-cli-mcp [options]\n\nOptions:\n  --version, -V    Show version information\n  --verbose, -v    Enable debug mode (set DEBUG=true)\n  --help, -h       Show this help message\n""")
+
+def print_version_and_exit():
+    print(f"gemini-cli-mcp version: {get_version()}")
+    try:
+        result = subprocess.run(["gemini", "--version"], check=True, capture_output=True, text=True)
+        gemini_version = result.stdout.strip()
+        if gemini_version:
+            print(f"gemini version: {gemini_version}")
+    except Exception:
+        pass
+    sys.exit(0)
+
+# Parse CLI options
+args = sys.argv[1:]
+if "--help" in args or "-h" in args:
+    print_help()
+    sys.exit(0)
+if "--version" in args or "-V" in args:
+    print_version_and_exit()
+if "--verbose" in args or "-v" in args:
+    os.environ["DEBUG"] = "true"
+
 # Setup logging based on DEBUG env
 DEBUG = os.environ.get("DEBUG", "false").lower() == "true"
 
