@@ -1,6 +1,6 @@
 {
   "name": "gemini-cli-mcp-node",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "index.js",
   "scripts": {
     "prebuild": "node build-version.js",
