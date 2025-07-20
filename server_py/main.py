@@ -204,7 +204,7 @@ def gemini_ask(question: str) -> dict:
     return run_gemini_command(question)
 
 @mcp.tool()
-def gemini_agent(prompt: str) -> dict:
+def gemini_yolo(prompt: str) -> dict:
     """Run a complex prompt with Gemini Agent in auto-execution (--yolo) mode."""
     return run_gemini_command(prompt, yolo=True)
 

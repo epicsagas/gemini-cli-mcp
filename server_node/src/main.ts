@@ -131,9 +131,9 @@ server.addTool({
     },
 });
 
-// gemini_agent tool
+// gemini_yolo tool
 server.addTool({
-    name: "gemini_agent",
+    name: "gemini_yolo",
     description: "Run a complex prompt with Gemini Agent in auto-execution (--yolo) mode.",
     parameters: z.object({
         prompt: z.string(),

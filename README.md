@@ -69,7 +69,7 @@ The server exposes `gemini-cli` commands as MCP tools. The core logic involves w
 | Tool Name           | Description                                                              | Main Params                                                  |
 | ------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------ |
 | `gemini_ask`        | Ask a question in Ask mode.                                              | `question` (string)                                          |
-| `gemini_agent`      | Run a prompt in Agent mode with auto-execution.                          | `prompt` (string)                                            |
+| `gemini_yolo`       | Run a prompt in Agent mode with auto-execution.                          | `prompt` (string)                                            |
 | ~~`gemini_git_commit`~~ | ~~Generate a conventional commit message and perform `git commit`.~~        | ~~`branch_name` (string, optional)~~                             |
 | ~~`gemini_git_pr`~~     | ~~Automatically commit, push, and create a PR.~~                             | ~~`commit_message`, `branch_name`, `pr_title` (all optional strings)~~ |
 | ~~`gemini_git_diff`~~   | ~~Summarize code changes using Gemini AI.~~                                  | ~~`diff_args` (string, optional)~~                               |
@@ -77,7 +77,7 @@ The server exposes `gemini-cli` commands as MCP tools. The core logic involves w
 ### Command Translation Example
 
 *   `gemini_ask` → `gemini ask --model {model} --all_files --sandbox --prompt "{question}"`
-*   `gemini_agent` → `gemini agent --model {model} --all_files --sandbox --yolo --prompt "{prompt}"`
+*   `gemini_yolo` → `gemini agent --model {model} --all_files --sandbox --yolo --prompt "{prompt}"`
 
 ## 4. MCP Client Configuration & Usage
 
@@ -126,7 +126,7 @@ The server exposes `gemini-cli` commands as MCP tools. The core logic involves w
 ## 5. Development Roadmap
 
 -   [x] **Phase 1: Python MVP**
-    -   [x] Implement `gemini_ask` and `gemini_agent` tools.
+    -   [x] Implement `gemini_ask` and `gemini_yolo` tools.
     -   [x] Complete `stdio` and `http` modes.
     -   [x] Finalize environment variable handling.
 -   [ ] ~~**Phase 2: Git Tools & Containerization**~~
