@@ -15,6 +15,3 @@ dependencies = [
 
 [project.scripts]
 gemini-cli-mcp = "main:main"
-
-[tool.setuptools]
-py-modules = ["main"]
