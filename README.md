@@ -58,7 +58,7 @@ flowchart LR
 This project provides separate, language-specific implementations. Please refer to the `README.md` file within each implementation directory for detailed setup and usage instructions.
 
 *   **[Python](./server_py/README.md)**: A server built with FastAPI.
-*   **Node.js**: (Coming soon)
+*   **[Node.js](./server_node/README.md)**: A server built with Node.js.
 
 ## 3. MCP Tool Reference
 
