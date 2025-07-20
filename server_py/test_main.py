@@ -12,7 +12,7 @@ def test_get_context():
     data = resp.json()
     assert "tools" in data
     assert any(t["name"] == "gemini_ask" for t in data["tools"])
-    assert any(t["name"] == "gemini_agent" for t in data["tools"])
+    assert any(t["name"] == "gemini_yolo" for t in data["tools"])
 
 @patch("subprocess.run")
 def test_run_gemini_ask(mock_run):
@@ -39,10 +39,10 @@ def test_run_gemini_ask_debug_env(mock_run, monkeypatch):
     assert data["stderr"] == ""
 
 @patch("subprocess.run")
-def test_run_gemini_agent(mock_run):
+def test_run_gemini_yolo(mock_run):
     mock_run.return_value.stdout = "agent result"
     mock_run.return_value.stderr = ""
-    payload = {"tool_name": "gemini_agent", "params": {"prompt": "Do something complex."}}
+    payload = {"tool_name": "gemini_yolo", "params": {"prompt": "Do something complex."}}
     resp = client.post("/mcp/v1/tools", json=payload)
     assert resp.status_code == 200
     data = resp.json()

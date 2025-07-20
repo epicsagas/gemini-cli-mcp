@@ -7,7 +7,7 @@ This directory contains the Python implementation of the `gemini-cli-mcp` server
 This server exposes the following `gemini-cli` commands as MCP Tools:
 
 *   `gemini_ask`: Ask a question to the Gemini model.
-*   `gemini_agent`: Run a complex prompt with Gemini Agent in auto-execution (`--yolo`) mode.
+*   `gemini_yolo`: Run a complex prompt with Gemini Agent in auto-execution (`--yolo`) mode.
 *   `gemini_git_commit`: Generate a conventional commit message from staged changes and perform a `git commit`.
 *   `gemini_git_pr`: Automatically commit, push, and create a Pull Request.
 *   `gemini_git_diff`: Summarize code changes using Gemini AI.
@@ -105,7 +105,7 @@ The server acts as a smart wrapper around `gemini-cli`. It constructs and execut
 
 For example:
 *   `gemini_ask(question="What is AI?")` translates to `gemini ask --model {model} --all-files --sandbox --prompt "What is AI?"`
-*   `gemini_agent(prompt="Do something complex.")` translates to `gemini agent --model {model} --all-files --sandbox --yolo --prompt "Do something complex."`
+*   `gemini_yolo(prompt="Do something complex.")` translates to `gemini agent --model {model} --all-files --sandbox --yolo --prompt "Do something complex."`
 
 ## 7. Logging
 

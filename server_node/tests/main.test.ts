@@ -12,9 +12,9 @@ describe('gemini-cli-mcp MCP server', () => {
         jest.clearAllMocks();
     });
 
-    it('should handle gemini_agent tool', async () => {
+    it('should handle gemini_yolo tool', async () => {
         // TODO: Mock spawn to simulate gemini CLI
-        // TODO: Call gemini_agent and check result
+        // TODO: Call gemini_yolo and check result
         expect(true).toBe(true);
     });
 
